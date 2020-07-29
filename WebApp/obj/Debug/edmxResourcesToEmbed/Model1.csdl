@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ADMINWEBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ADMINWEBEntities1" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="USP_Categoria" ReturnType="Collection(ADMINWEBModel1.USP_Categoria_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="USP_Categoria_Result">
+    <Property Type="Int32" Name="id_Producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoria" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="idcategoria" Nullable="true" />
+  </ComplexType>
+</Schema>

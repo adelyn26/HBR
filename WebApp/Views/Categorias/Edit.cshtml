@@ -1,0 +1,78 @@
+﻿@model WebApp.Models.Categoria
+
+
+<section>
+
+    @*<div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h2>Editar Paciente</h2>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+
+
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")"><i class="zmdi zmdi-home"></i> Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index")"><i class="zmdi zmdi-library"></i> Listado de Pacientes</a></li>
+                        <li class="breadcrumb-item active">Registrar Admisión </li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+    <div class="container-fluid">
+
+        @using (Html.BeginForm("Edit", "Categorias", FormMethod.Post, new { onkeydown = "return event.keyCode!=13" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="id_Categoria" value="@Model.id_Categoria" />
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nombre de la categoria</label>
+                                        <input type="text" name="nombre" id="nombre" value="@Model.nombre" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+
+
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-round">Editar</button>
+                            <button type="button" class="btn btn-default btn-round btn-simple" id="btn_cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</section>
+
+<script src="~/Content/Menu/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/Menu/js/jquery-1.10.2.min.js"></script>
+
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btn_cancelar').click(function () {
+            window.location.href = '/Categorias/Index';
+        })
+
+
+
+    })
+
+</script>
+

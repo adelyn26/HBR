@@ -1,0 +1,87 @@
+﻿@model WebApp.Models.Usuario
+
+<section>
+
+    <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+
+
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")"><i class="zmdi zmdi-home"></i> Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index")"><i class="zmdi zmdi-library"></i> Editar Perfil</a></li>
+                        <li class="breadcrumb-item active">Registrar Perfil </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="container-fluid">
+
+        @using (Html.BeginForm("Edit", "Usuarios", FormMethod.Post, new { onkeydown = "return event.keyCode!=13" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="id_Categoria" value="@Model.id_registro" />
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" name="nombre" id="nombre" value="@Model.nombre" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Apellido</label>
+                                        <input type="text" name="apellido" id="nombre" value="@Model.apellido" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row clearfix">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Telefono</label>
+                                        <input type="text" name="telefono" id="nombre" value="@Model.telefono" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Correo Electronico</label>
+                                        <input type="text" name="correo" id="nombre" value="@Model.correo" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <input type="text" name="contrasena" id="nombre" value="@Model.contrasena" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+
+
+                        <div class="col-sm-12">
+                            <a href="\Usuarios\Edit?id= @Model.id_registro" title="Editar" type="button" class="btn btn-outline-primary">Editar Perfil</a>
+                            <a href="\Usuarios\Details?id= @Model.id_registro" title="Regresar" type="button" class="btn btn-outline-primary">Regresar</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</section>
+
+
+

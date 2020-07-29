@@ -1,0 +1,56 @@
+﻿@model WebApp.Models.Categoria
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="body">
+                <div class="row clearfix">
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Nombre de la categoria</label>
+                            <input type="text" name="nombre" id="nombre" value="@Model.nombre" class="form-control" placeholder=" ">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row clearfix">
+
+
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-danger btn-round">Delete</button>
+                <button type="button" class="btn btn-default btn-round btn-simple" id="btn_cancelar">Cancelar</button>
+            </div>
+        </div>
+        <input type="hidden" name="id_Categoria" value="@Model.id_Categoria" />
+        @*<div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
+    }
+</div>
+<script src="~/Content/Menu/js/jquery-3.3.1.min.js"></script>
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btn_cancelar').click(function () {
+            window.location.href = '/Categorias/Index';
+        })
+
+
+    })
+
+</script>

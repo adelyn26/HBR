@@ -1,0 +1,50 @@
+﻿@model WebApp.Models.Producto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h4>Detalle del Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idcategoria)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    <div class="row clearfix">
+
+
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary btn-round" id="btnCancelar">Regresar</button>
+        </div>
+    </div>
+</p>
+
+<script src="~/Content/Menu/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnCancelar").click(function () {
+                window.location.href = '/Productoes/Index';
+            })
+        })
+</script>

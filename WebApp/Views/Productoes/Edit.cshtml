@@ -1,0 +1,108 @@
+﻿@model WebApp.Models.Producto
+
+
+<section>
+
+
+    <div class="container-fluid">
+
+        @using (Html.BeginForm("Edit", "Productoes", FormMethod.Post, new { onkeydown = "return event.keyCode!=13" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="id_Producto" value="@Model.id_Producto" />
+            <input type="hidden" name="idcategoria" value="@Model.idcategoria" />
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nombre del Producto</label>
+                                        <input type="text" name="nombre" id="nombre" value="@Model.nombre" class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-5">
+                                    <label class="form-label" for="dllcategoria">Categoria del producto:</label>
+                                    <select id="dllcategoria" name="idcategoria" data-live-search="true" class="form-control">
+                                        <option value="">Seleccione</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+
+
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-round">Editar</button>
+                            <button type="button" class="btn btn-default btn-round btn-simple" id="btn_cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</section>
+<script src="~/Content/Menu/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/Menu/js/jquery-1.10.2.min.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btn_cancelar').click(function () {
+            window.location.href = '/Productoes/Index';
+        })
+
+        
+
+         $.getJSON("@Url.Action("GetCategoria")", null, function (data) {
+             $("#dllcategoria").fillSelect(data);
+        }).then(() => {
+            $('#dllcategoria').val(@Model.idcategoria).selectpicker('refresh');
+
+        });
+
+
+          
+
+
+
+        $.fn.clearSelect = function () {
+            return this.each(function () {
+                if (this.tagName == 'SELECT')
+                    this.options.length = 0;
+            });
+        }
+
+        $.fn.fillSelect = function (data) {
+            return this.clearSelect().each(function () {
+                if (this.tagName == 'SELECT') {
+                    var dropdownList = this;
+                    //Add default Value
+                    var option = new Option("Seleccione", "");
+                    dropdownList.add(option);
+
+                    $.each(data, function (index, optionData) {
+                        option = new Option(optionData.Text, optionData.Value);
+                        dropdownList.add(option);
+                    });
+                }
+            });
+        }
+
+
+
+    })
+
+</script>
+

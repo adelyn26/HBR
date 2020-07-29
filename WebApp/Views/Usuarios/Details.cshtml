@@ -1,0 +1,88 @@
+﻿@model WebApp.Models.Usuario
+
+<section>
+    <div class="block-header">
+        <div class="row">
+            <div class="">
+                <h2 style="text-align:center">PERFIL DE USUARIO</h2>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" name="nombre" id="nombre" value="@Model.nombre" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input type="text" name="categoria" id="categoria" value="@Model.apellido" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row clearfix">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Telefono</label>
+                                    <input type="text" name="categoria" id="categoria" value="@Model.telefono" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Correo Electronico</label>
+                                    <input type="text" value="@Model.correo" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="text" value="@Model.contrasena" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+
+
+                    <div class="col-sm-12">
+                        <a href="\Usuarios\Edit?id= @Model.id_registro" title="Editar" type="button" class="btn btn-outline-primary">Editar Perfil</a>
+                        <button type="button" class="btn btn-outline-primary" id="btn_cancelar">Regresar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<script src="~/Content/Menu/js/jquery-3.3.1.min.js"></script>
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btn_cancelar').click(function () {
+            window.location.href = '/Home/Index';
+        })
+
+
+    })
+
+</script>

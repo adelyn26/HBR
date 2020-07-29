@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ADMINWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ADMINWEBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categoria" EntityType="ADMINWEBModel.Categoria" />
+    <EntitySet Name="Producto" EntityType="ADMINWEBModel.Producto" />
+    <AssociationSet Name="FK_Producto_Categoria" Association="ADMINWEBModel.FK_Producto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <EntitySet Name="Usuario" EntityType="ADMINWEBModel.Usuario" />
+    <FunctionImport Name="USP_Categoria" ReturnType="Collection(ADMINWEBModel.USP_Categoria_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetCategoria" EntitySet="Producto" ReturnType="Collection(ADMINWEBModel.Producto)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_Categoria_Procedure" EntitySet="Producto" ReturnType="Collection(ADMINWEBModel.Producto)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="id_Categoria" />
+    </Key>
+    <Property Name="id_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Producto" Relationship="ADMINWEBModel.FK_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="id_Producto" />
+    </Key>
+    <Property Name="id_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="categoria" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="idcategoria" Type="Int32" />
+    <NavigationProperty Name="Categoria1" Relationship="ADMINWEBModel.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
+  </EntityType>
+  <Association Name="FK_Producto_Categoria">
+    <End Type="ADMINWEBModel.Categoria" Role="Categoria" Multiplicity="0..1" />
+    <End Type="ADMINWEBModel.Producto" Role="Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="id_Categoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="idcategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id_registro" />
+    </Key>
+    <Property Name="id_registro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="contrasena" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="USP_Categoria_Result">
+    <Property Type="Int32" Name="id_Producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="categoria" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="idcategoria" Nullable="true" />
+  </ComplexType>
+</Schema>

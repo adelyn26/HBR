@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ADMINWEBModel1StoreContainer" CdmEntityContainer="ADMINWEBEntities1">
+    <FunctionImportMapping FunctionImportName="USP_Categoria" FunctionName="ADMINWEBModel1.Store.USP_Categoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ADMINWEBModel1.USP_Categoria_Result">
+          <ScalarProperty Name="id_Producto" ColumnName="id_Producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="idcategoria" ColumnName="idcategoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,63 @@
+﻿@model WebApp.Models.Usuario
+
+<!DOCTYPE html>
+<html lang="en">
+@{
+    Layout = null;
+}
+<head>
+    <title>Gaze Sign up & login Form a Flat Responsive Widget Template :: w3layouts </title>
+    <!-- Meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Gaze Sign up & login Form Responsive Widget, Audio and Video players, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script>
+        addEventListener("load", function () { setTimeout(hideURLbar, 0); }, false); function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- Meta tags -->
+    <!--stylesheets-->
+    <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+    <link href="~/Content/Login/css/style.css" rel="stylesheet" />
+    <!--//style sheet end here-->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+</head>
+<body>
+    <div class="mid-class">
+        <div class="art-right-w3ls">
+            <h2>Sign In and Sign Up</h2>
+            <form action="#" method="post">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Raw(TempData["msg"])
+                    <div class="main">
+                        <div class="form-left-to-w3l">
+                            <input type="email" name="correo" placeholder="Email" required="">
+                        </div>
+                        <div class="form-left-to-w3l ">
+                            <input type="password" name="contrasena" placeholder="Contraseña" required="">
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <div class="btnn">
+                        <button type="submit">Iniciar Seccion</button>
+                    </div>
+
+                    <div class="w3layouts_more-buttn">
+                        <h3>
+                            No tiene una cuenta..?
+                            <a href="/Usuarios/Create" style="color:aqua">
+                                Registrese aqui!
+                            </a>
+                        </h3>
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

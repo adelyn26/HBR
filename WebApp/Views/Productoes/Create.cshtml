@@ -1,0 +1,142 @@
+﻿@model WebApp.Models.Producto
+
+
+<section>
+
+    @*<div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h2>Actor</h2>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+
+
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")"><i class="zmdi zmdi-home"></i> Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index")"><i class="zmdi zmdi-library"></i> Listado de Actores</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+    <div class="container-fluid">
+
+        @using (Html.BeginForm("Create", "Productoes", FormMethod.Post, new { onkeydown = "return event.keyCode!=13" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Nombre del Producto</label>
+                                        <input type="text" id="nombre" name="nombre" required class="form-control" placeholder=" ">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row clearfix">
+                                @*<input type="hidden" id="idcategoria" name="idcategoria" />*@
+                                <div class="col-sm-5">
+                                    <label class="form-label" for="dllcategoria">Categoria del producto:</label>
+                                    <select id="dllcategoria" name="idcategoria" data-live-search="true" class="form-control">
+                                        <option value=" ">Seleccione</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="col-md-12">
+
+                    <div class="row clearfix">
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-primary btn-round">Registrar</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-default btn-round btn-simple" id="btn_cancelar">Cancelar</button>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        }
+    </div>
+</section>
+<script src="~/Content/Menu/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/Menu/js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+        $.getJSON("@Url.Action("GetCategoria", "Productoes")", null, function (data) {
+            $("#dllcategoria").fillSelect(data);
+        }).then(() => {
+            $('#dllcategoria').selectpicker('refresh');
+        });
+
+
+        $('#btn_cancelar').click(function () {
+            window.location.href = '/Productoes/Index';
+        })
+
+
+
+
+
+
+
+
+        $.fn.clearSelect = function () {
+            return this.each(function () {
+                if (this.tagName == 'SELECT')
+                    this.options.length = 0;
+            });
+        }
+
+        $.fn.fillSelect = function (data) {
+            return this.clearSelect().each(function () {
+                if (this.tagName == 'SELECT') {
+                    var dropdownList = this;
+                    //Add default Value
+                    var option = new Option("Seleccione", "");
+                    dropdownList.add(option);
+
+                    $.each(data, function (index, optionData) {
+                        option = new Option(optionData.Text, optionData.Value);
+                        dropdownList.add(option);
+                    });
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+
+    })
+
+
+</script>
+
